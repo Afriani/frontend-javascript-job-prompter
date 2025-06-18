@@ -72,3 +72,100 @@ const departments = {
 }
 
 console.log(departments);
+
+// ---------------------------------------- OPDRACHT 1 ------------------------------------------
+//  1a
+console.log("De afdeling Sales heeft ", departments.sales.numberOfEmployees, " medewerkers");
+
+// 1b
+console.log("Marketing is een leuke afdeling om te werken.", departments.marketing.description);
+
+// 1c
+console.log("De afdeling Customer Service heeft ", departments["customer-service"].numberOfEmployees, " medewerkers");
+
+// 1d
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager.", departments.sales.description);
+
+// ---------------------------------------- OPDRACHT 2 ------------------------------------------
+// 2a
+const userInput = prompt("Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]");
+const afdeling = departments[userInput];
+
+// 2b & 2c
+if (userInput === "marketing") {
+    console.log("Je koos ", userInput, ".", departments.marketing.description);
+} else if (userInput === "sales") {
+    console.log("Je koos ", userInput, ".", departments.sales.description);
+} else if (userInput === "customer-service") {
+    console.log("Je koos ", userInput, ".", departments["customer-service"].description);
+} else {
+    console.log('Ongeldige keuze. Kies uit: marketing, sales, of customer-service.')
+
+// ---------------------------------------- OPDRACHT 3 ------------------------------------------
+// 3a
+//let promptMessage = "Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n";
+
+// 3b
+//for (let i = 0; i < departments.marketing.jobs.length; i++) {
+//    promptMessage += `${i}: ${departments.marketing.jobs[i].title}\n`;
+}
+
+//const jobChoice = prompt(promptMessage);
+//console.log(`Gebruiker koos functie-index: ${jobChoice}`);
+
+//3c
+//console.log(jobChoice);
+
+// ---------------------------------------- OPDRACHT 4 ------------------------------------------
+// 4a
+document.getElementById(userInput, " is een leuke afdeling om te werken. Er werken op dit moment ", departments[userInput].numberOfEmployees, " medewerkers.");
+
+// 4b
+let promptMessage = "Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n";
+for (let i = 0; i < departments.marketing.jobs.length; i++) {
+    promptMessage += `${i}: ${departments.marketing.jobs[i].title}\n`;
+}
+
+const jobChoice = prompt(promptMessage);
+document.getElementById(`Gebruiker koos functie-index: ${jobChoice}`);
+
+// 4c
+if (jobChoice === "0" || jobChoice === "1" || jobChoice === "2" || jobChoice === "3") {
+    const functie = departments[userInput].jobs[parseInt(jobChoice)];
+    document.getElementById(`Je koos ${functie.title}. Een uitdagende rol! ${functie.description}`);
+} else {
+    document.getElementById("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+}
+
+// ---------------------------------------- OPDRACHT 5 ------------------------------------------
+// 5a
+// document.getElementById("Manager").textContent = "Ando";
+// document.getElementById("new manager").textContent = "Start Juli 2025";
+
+//5b
+if (jobChoice === "0" || jobChoice === "1" || jobChoice === "2" || jobChoice === "3") {
+    const functie = departments[userInput].jobs[parseInt(jobChoice)];
+
+    // Output in HTML
+    document.getElementById("role-title").textContent = functie.title;
+    document.getElementById("department-description").textContent = `${userInput} omvat verschillende strategieën en activiteiten gericht op het promoten van producten, diensten of merken bij het doelpubliek. Het omvat het begrijpen van de behoeften en voorkeuren van consumenten, het uitvoeren van marktonderzoek, het ontwikkelen van marketingplannen en het implementeren van tactieken om potentiële klanten te bereiken en te betrekken.`;
+    document.getElementById("role-description").textContent = functie.description;
+
+    // Foutmelding wissen als alles goed ging
+    document.getElementById("error-message").textContent = "";
+} else {
+    // Foutmelding tonen
+    document.getElementById("error-message").textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.";
+
+    // Lege velden als fallback
+    document.getElementById("role-title").textContent = "";
+    document.getElementById("department-description").textContent = "";
+    document.getElementById("role-description").textContent = "";
+}
+
+
+
+
+
+
+
